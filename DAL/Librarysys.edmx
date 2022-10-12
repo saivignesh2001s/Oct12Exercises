@@ -1,0 +1,727 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="libraryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Book_No" />
+          </Key>
+          <Property Name="Book_No" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="Book_Name" Type="varchar" MaxLength="30" />
+          <Property Name="Author" Type="char" MaxLength="30" />
+          <Property Name="Cost" Type="numeric" Precision="7" Scale="2" />
+          <Property Name="Category" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Book_c">
+          <Key>
+            <PropertyRef Name="Book_No" />
+          </Key>
+          <Property Name="Book_No" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="Book_Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Category" Type="char" MaxLength="10" />
+          <Property Name="Cost" Type="int" />
+          <Property Name="author" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'library.dbo.Book101' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Book101">
+          <Key>
+            <PropertyRef Name="Book_No" />
+          </Key>
+          <Property Name="Book_No" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="Book_Name" Type="varchar" MaxLength="30" />
+          <Property Name="Author" Type="char" MaxLength="30" />
+          <Property Name="Cost" Type="numeric" Precision="7" Scale="2" />
+          <Property Name="Category" Type="char" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'library.dbo.issu01' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="issu01">
+          <Key>
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="member_id" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="member_name" Type="char" MaxLength="20" />
+          <Property Name="booksissued" Type="int" />
+          <Property Name="maxbooksallowed" Type="numeric" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Issue">
+          <Key>
+            <PropertyRef Name="Lib_Issue_Id" />
+          </Key>
+          <Property Name="Lib_Issue_Id" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="Book_No" Type="numeric" Precision="6" Scale="0" />
+          <Property Name="Member_Id" Type="numeric" Precision="5" Scale="0" />
+          <Property Name="Issue_Date" Type="date" />
+          <Property Name="Return_date" Type="date" />
+          <Property Name="comments" Type="char" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Issue_c">
+          <Key>
+            <PropertyRef Name="Lib_Issue_Id" />
+          </Key>
+          <Property Name="Lib_Issue_Id" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="Book_No" Type="numeric" Precision="6" Scale="0" />
+          <Property Name="Member_Id" Type="numeric" Precision="5" Scale="0" />
+          <Property Name="Issue_Date" Type="date" />
+          <Property Name="Return_date" Type="date" />
+        </EntityType>
+        <EntityType Name="member">
+          <Key>
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="member_id" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="member_name" Type="char" MaxLength="20" />
+          <Property Name="Acc_open_date" Type="date" />
+          <Property Name="maxbooksallowed" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="penaltyamount" Type="numeric" Precision="7" Scale="2" />
+        </EntityType>
+        <EntityType Name="member_c">
+          <Key>
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="member_id" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="member_name" Type="char" MaxLength="25" />
+          <Property Name="Acc_open_date" Type="date" />
+          <Property Name="maxbooksallowed" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="penaltyamount" Type="numeric" Precision="7" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'library.dbo.member101' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="member101">
+          <Key>
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="member_id" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="member_name" Type="char" MaxLength="20" />
+          <Property Name="Acc_open_date" Type="date" />
+          <Property Name="maxbooksallowed" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="penaltyamount" Type="numeric" Precision="7" Scale="2" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'library.dbo.member8' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="member8">
+          <Key>
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="member_id" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="member_name" Type="char" MaxLength="20" />
+          <Property Name="count1" Type="numeric" Precision="6" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'library.dbo.Users' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Users">
+          <Property Name="username" Type="numeric" Precision="5" Scale="0" />
+          <Property Name="password1" Type="varchar" MaxLength="10" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'library.dbo.v_issue' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_issue">
+          <Key>
+            <PropertyRef Name="Lib_Issue_Id" />
+            <PropertyRef Name="Book_Name" />
+          </Key>
+          <Property Name="Lib_Issue_Id" Type="numeric" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="Book_Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Member_Name" Type="char" MaxLength="25" />
+          <Property Name="Author" Type="nvarchar" MaxLength="20" />
+          <Property Name="Issue_date" Type="date" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'library.dbo.v_issue01' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_issue01">
+          <Key>
+            <PropertyRef Name="Book_No" />
+          </Key>
+          <Property Name="Book_No" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="Book_Name" Type="varchar" MaxLength="30" />
+          <Property Name="Author" Type="char" MaxLength="30" />
+          <Property Name="Cost" Type="numeric" Precision="7" Scale="2" />
+          <Property Name="Category" Type="char" MaxLength="10" />
+        </EntityType>
+        <Association Name="pk_bk">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="Issue" Type="Self.Issue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="Book_No" />
+            </Principal>
+            <Dependent Role="Issue">
+              <PropertyRef Name="Book_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_bk1">
+          <End Role="Book_c" Type="Self.Book_c" Multiplicity="0..1" />
+          <End Role="Issue_c" Type="Self.Issue_c" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book_c">
+              <PropertyRef Name="Book_No" />
+            </Principal>
+            <Dependent Role="Issue_c">
+              <PropertyRef Name="Book_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_mem">
+          <End Role="member" Type="Self.member" Multiplicity="0..1" />
+          <End Role="Issue" Type="Self.Issue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="member_id" />
+            </Principal>
+            <Dependent Role="Issue">
+              <PropertyRef Name="Member_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_mem1">
+          <End Role="member_c" Type="Self.member_c" Multiplicity="0..1" />
+          <End Role="Issue_c" Type="Self.Issue_c" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member_c">
+              <PropertyRef Name="member_id" />
+            </Principal>
+            <Dependent Role="Issue_c">
+              <PropertyRef Name="Member_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'library.dbo.Users' is referenced by a relationship, but cannot be found.
+        <Association Name="pk_user" />-->
+        <Function Name="count1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="counts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="param1" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="sp_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_bno" Type="int" Mode="In" />
+          <Parameter Name="p_Bookno" Type="int" Mode="InOut" />
+          <Parameter Name="p_Bname" Type="nvarchar" Mode="InOut" />
+          <Parameter Name="p_Author" Type="nvarchar" Mode="InOut" />
+          <Parameter Name="p_cost" Type="int" Mode="InOut" />
+          <Parameter Name="p_category" Type="nvarchar" Mode="InOut" />
+        </Function>
+        <Function Name="UpdateBooknum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="param1" Type="int" Mode="In" />
+          <Parameter Name="param2" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UpdateBooksauthor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="param1" Type="numeric" Mode="In" />
+          <Parameter Name="param2" Type="char" Mode="In" />
+        </Function>
+        <Function Name="UpdateBookscategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="param1" Type="numeric" Mode="In" />
+          <Parameter Name="param2" Type="char" Mode="In" />
+        </Function>
+        <Function Name="UpdateBooksname" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="param1" Type="numeric" Mode="In" />
+          <Parameter Name="param2" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UpdateBooksprice" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="param1" Type="numeric" Mode="In" />
+          <Parameter Name="param2" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="Updatestatus" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="param1" Type="int" Mode="In" />
+          <Parameter Name="param4" Type="int" Mode="In" />
+          <Parameter Name="param6" Type="int" Mode="In" />
+          <Parameter Name="param2" Type="date" Mode="In" />
+          <Parameter Name="param3" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="libraryModelStoreContainer">
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book_c" EntityType="Self.Book_c" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Issue" EntityType="Self.Issue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Issue_c" EntityType="Self.Issue_c" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="member_c" EntityType="Self.member_c" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book101" EntityType="Self.Book101" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Book101].[Book_No] AS [Book_No], 
+    [Book101].[Book_Name] AS [Book_Name], 
+    [Book101].[Author] AS [Author], 
+    [Book101].[Cost] AS [Cost], 
+    [Book101].[Category] AS [Category]
+    FROM [dbo].[Book101] AS [Book101]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="issu01" EntityType="Self.issu01" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [issu01].[member_id] AS [member_id], 
+    [issu01].[member_name] AS [member_name], 
+    [issu01].[booksissued] AS [booksissued], 
+    [issu01].[maxbooksallowed] AS [maxbooksallowed]
+    FROM [dbo].[issu01] AS [issu01]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="member101" EntityType="Self.member101" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [member101].[member_id] AS [member_id], 
+    [member101].[member_name] AS [member_name], 
+    [member101].[Acc_open_date] AS [Acc_open_date], 
+    [member101].[maxbooksallowed] AS [maxbooksallowed], 
+    [member101].[penaltyamount] AS [penaltyamount]
+    FROM [dbo].[member101] AS [member101]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="member8" EntityType="Self.member8" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [member8].[member_id] AS [member_id], 
+    [member8].[member_name] AS [member_name], 
+    [member8].[count1] AS [count1]
+    FROM [dbo].[member8] AS [member8]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_issue" EntityType="Self.v_issue" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_issue].[Lib_Issue_Id] AS [Lib_Issue_Id], 
+    [v_issue].[Book_Name] AS [Book_Name], 
+    [v_issue].[Member_Name] AS [Member_Name], 
+    [v_issue].[Author] AS [Author], 
+    [v_issue].[Issue_date] AS [Issue_date]
+    FROM [dbo].[v_issue] AS [v_issue]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_issue01" EntityType="Self.v_issue01" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_issue01].[Book_No] AS [Book_No], 
+    [v_issue01].[Book_Name] AS [Book_Name], 
+    [v_issue01].[Author] AS [Author], 
+    [v_issue01].[Cost] AS [Cost], 
+    [v_issue01].[Category] AS [Category]
+    FROM [dbo].[v_issue01] AS [v_issue01]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="pk_bk" Association="Self.pk_bk">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Issue" EntitySet="Issue" />
+          </AssociationSet>
+          <AssociationSet Name="pk_bk1" Association="Self.pk_bk1">
+            <End Role="Book_c" EntitySet="Book_c" />
+            <End Role="Issue_c" EntitySet="Issue_c" />
+          </AssociationSet>
+          <AssociationSet Name="pk_mem" Association="Self.pk_mem">
+            <End Role="member" EntitySet="member" />
+            <End Role="Issue" EntitySet="Issue" />
+          </AssociationSet>
+          <AssociationSet Name="pk_mem1" Association="Self.pk_mem1">
+            <End Role="member_c" EntitySet="member_c" />
+            <End Role="Issue_c" EntitySet="Issue_c" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="libraryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="Book_No" />
+          </Key>
+          <Property Name="Book_No" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="Book_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Author" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="Cost" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="Category" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Issues" Relationship="Self.pk_bk" FromRole="Book" ToRole="Issue" />
+        </EntityType>
+        <EntityType Name="Book_c">
+          <Key>
+            <PropertyRef Name="Book_No" />
+          </Key>
+          <Property Name="Book_No" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="Book_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="Cost" Type="Int32" />
+          <Property Name="author" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Issue_c" Relationship="Self.pk_bk1" FromRole="Book_c" ToRole="Issue_c" />
+        </EntityType>
+        <EntityType Name="Issue">
+          <Key>
+            <PropertyRef Name="Lib_Issue_Id" />
+          </Key>
+          <Property Name="Lib_Issue_Id" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="Book_No" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="Member_Id" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="Issue_Date" Type="DateTime" Precision="0" />
+          <Property Name="Return_date" Type="DateTime" Precision="0" />
+          <Property Name="comments" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Book" Relationship="Self.pk_bk" FromRole="Issue" ToRole="Book" />
+          <NavigationProperty Name="member" Relationship="Self.pk_mem" FromRole="Issue" ToRole="member" />
+        </EntityType>
+        <EntityType Name="Issue_c">
+          <Key>
+            <PropertyRef Name="Lib_Issue_Id" />
+          </Key>
+          <Property Name="Lib_Issue_Id" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="Book_No" Type="Decimal" Precision="6" Scale="0" />
+          <Property Name="Member_Id" Type="Decimal" Precision="5" Scale="0" />
+          <Property Name="Issue_Date" Type="DateTime" Precision="0" />
+          <Property Name="Return_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Book_c" Relationship="Self.pk_bk1" FromRole="Issue_c" ToRole="Book_c" />
+          <NavigationProperty Name="member_c" Relationship="Self.pk_mem1" FromRole="Issue_c" ToRole="member_c" />
+        </EntityType>
+        <EntityType Name="member">
+          <Key>
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="member_id" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="member_name" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Acc_open_date" Type="DateTime" Precision="0" />
+          <Property Name="maxbooksallowed" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="penaltyamount" Type="Decimal" Precision="7" Scale="2" />
+          <NavigationProperty Name="Issues" Relationship="Self.pk_mem" FromRole="member" ToRole="Issue" />
+        </EntityType>
+        <EntityType Name="member_c">
+          <Key>
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="member_id" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="member_name" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="Acc_open_date" Type="DateTime" Precision="0" />
+          <Property Name="maxbooksallowed" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="penaltyamount" Type="Decimal" Precision="7" Scale="2" />
+          <NavigationProperty Name="Issue_c" Relationship="Self.pk_mem1" FromRole="member_c" ToRole="Issue_c" />
+        </EntityType>
+        <EntityType Name="Book101">
+          <Key>
+            <PropertyRef Name="Book_No" />
+          </Key>
+          <Property Name="Book_No" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="Book_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Author" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="Cost" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="Category" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="issu01">
+          <Key>
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="member_id" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="member_name" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="booksissued" Type="Int32" />
+          <Property Name="maxbooksallowed" Type="Decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="member101">
+          <Key>
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="member_id" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="member_name" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="Acc_open_date" Type="DateTime" Precision="0" />
+          <Property Name="maxbooksallowed" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="penaltyamount" Type="Decimal" Precision="7" Scale="2" />
+        </EntityType>
+        <EntityType Name="member8">
+          <Key>
+            <PropertyRef Name="member_id" />
+          </Key>
+          <Property Name="member_id" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="member_name" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="count1" Type="Decimal" Precision="6" Scale="0" />
+        </EntityType>
+        <EntityType Name="v_issue">
+          <Key>
+            <PropertyRef Name="Lib_Issue_Id" />
+            <PropertyRef Name="Book_Name" />
+          </Key>
+          <Property Name="Lib_Issue_Id" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="Book_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Member_Name" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+          <Property Name="Author" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Issue_date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="v_issue01">
+          <Key>
+            <PropertyRef Name="Book_No" />
+          </Key>
+          <Property Name="Book_No" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="Book_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Author" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <Property Name="Cost" Type="Decimal" Precision="7" Scale="2" />
+          <Property Name="Category" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <Association Name="pk_bk">
+          <End Role="Book" Type="Self.Book" Multiplicity="0..1" />
+          <End Role="Issue" Type="Self.Issue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="Book_No" />
+            </Principal>
+            <Dependent Role="Issue">
+              <PropertyRef Name="Book_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_bk1">
+          <End Role="Book_c" Type="Self.Book_c" Multiplicity="0..1" />
+          <End Role="Issue_c" Type="Self.Issue_c" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book_c">
+              <PropertyRef Name="Book_No" />
+            </Principal>
+            <Dependent Role="Issue_c">
+              <PropertyRef Name="Book_No" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_mem">
+          <End Role="member" Type="Self.member" Multiplicity="0..1" />
+          <End Role="Issue" Type="Self.Issue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="member_id" />
+            </Principal>
+            <Dependent Role="Issue">
+              <PropertyRef Name="Member_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_mem1">
+          <End Role="member_c" Type="Self.member_c" Multiplicity="0..1" />
+          <End Role="Issue_c" Type="Self.Issue_c" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member_c">
+              <PropertyRef Name="member_id" />
+            </Principal>
+            <Dependent Role="Issue_c">
+              <PropertyRef Name="Member_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="libraryEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Books" EntityType="Self.Book" />
+          <EntitySet Name="Book_c" EntityType="Self.Book_c" />
+          <EntitySet Name="Issues" EntityType="Self.Issue" />
+          <EntitySet Name="Issue_c" EntityType="Self.Issue_c" />
+          <EntitySet Name="members" EntityType="Self.member" />
+          <EntitySet Name="member_c" EntityType="Self.member_c" />
+          <EntitySet Name="Book101" EntityType="Self.Book101" />
+          <EntitySet Name="issu01" EntityType="Self.issu01" />
+          <EntitySet Name="member101" EntityType="Self.member101" />
+          <EntitySet Name="member8" EntityType="Self.member8" />
+          <EntitySet Name="v_issue" EntityType="Self.v_issue" />
+          <EntitySet Name="v_issue01" EntityType="Self.v_issue01" />
+          <AssociationSet Name="pk_bk" Association="Self.pk_bk">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="Issue" EntitySet="Issues" />
+          </AssociationSet>
+          <AssociationSet Name="pk_bk1" Association="Self.pk_bk1">
+            <End Role="Book_c" EntitySet="Book_c" />
+            <End Role="Issue_c" EntitySet="Issue_c" />
+          </AssociationSet>
+          <AssociationSet Name="pk_mem" Association="Self.pk_mem">
+            <End Role="member" EntitySet="members" />
+            <End Role="Issue" EntitySet="Issues" />
+          </AssociationSet>
+          <AssociationSet Name="pk_mem1" Association="Self.pk_mem1">
+            <End Role="member_c" EntitySet="member_c" />
+            <End Role="Issue_c" EntitySet="Issue_c" />
+          </AssociationSet>
+          <FunctionImport Name="count1" />
+          <FunctionImport Name="counts">
+            <Parameter Name="param1" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_update">
+            <Parameter Name="p_bno" Mode="In" Type="Int32" />
+            <Parameter Name="p_Bookno" Mode="InOut" Type="Int32" />
+            <Parameter Name="p_Bname" Mode="InOut" Type="String" />
+            <Parameter Name="p_Author" Mode="InOut" Type="String" />
+            <Parameter Name="p_cost" Mode="InOut" Type="Int32" />
+            <Parameter Name="p_category" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateBooknum">
+            <Parameter Name="param1" Mode="In" Type="Int32" />
+            <Parameter Name="param2" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateBooksauthor">
+            <Parameter Name="param1" Mode="In" Type="Decimal" />
+            <Parameter Name="param2" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateBookscategory">
+            <Parameter Name="param1" Mode="In" Type="Decimal" />
+            <Parameter Name="param2" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateBooksname">
+            <Parameter Name="param1" Mode="In" Type="Decimal" />
+            <Parameter Name="param2" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UpdateBooksprice">
+            <Parameter Name="param1" Mode="In" Type="Decimal" />
+            <Parameter Name="param2" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="Updatestatus">
+            <Parameter Name="param1" Mode="In" Type="Int32" />
+            <Parameter Name="param4" Mode="In" Type="Int32" />
+            <Parameter Name="param6" Mode="In" Type="Int32" />
+            <Parameter Name="param2" Mode="In" Type="DateTime" />
+            <Parameter Name="param3" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="libraryModelStoreContainer" CdmEntityContainer="libraryEntities">
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="libraryModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="Book_No" ColumnName="Book_No" />
+                <ScalarProperty Name="Book_Name" ColumnName="Book_Name" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Book_c">
+            <EntityTypeMapping TypeName="libraryModel.Book_c">
+              <MappingFragment StoreEntitySet="Book_c">
+                <ScalarProperty Name="Book_No" ColumnName="Book_No" />
+                <ScalarProperty Name="Book_Name" ColumnName="Book_Name" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="author" ColumnName="author" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Issues">
+            <EntityTypeMapping TypeName="libraryModel.Issue">
+              <MappingFragment StoreEntitySet="Issue">
+                <ScalarProperty Name="Lib_Issue_Id" ColumnName="Lib_Issue_Id" />
+                <ScalarProperty Name="Book_No" ColumnName="Book_No" />
+                <ScalarProperty Name="Member_Id" ColumnName="Member_Id" />
+                <ScalarProperty Name="Issue_Date" ColumnName="Issue_Date" />
+                <ScalarProperty Name="Return_date" ColumnName="Return_date" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Issue_c">
+            <EntityTypeMapping TypeName="libraryModel.Issue_c">
+              <MappingFragment StoreEntitySet="Issue_c">
+                <ScalarProperty Name="Lib_Issue_Id" ColumnName="Lib_Issue_Id" />
+                <ScalarProperty Name="Book_No" ColumnName="Book_No" />
+                <ScalarProperty Name="Member_Id" ColumnName="Member_Id" />
+                <ScalarProperty Name="Issue_Date" ColumnName="Issue_Date" />
+                <ScalarProperty Name="Return_date" ColumnName="Return_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="members">
+            <EntityTypeMapping TypeName="libraryModel.member">
+              <MappingFragment StoreEntitySet="member">
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="member_name" ColumnName="member_name" />
+                <ScalarProperty Name="Acc_open_date" ColumnName="Acc_open_date" />
+                <ScalarProperty Name="maxbooksallowed" ColumnName="maxbooksallowed" />
+                <ScalarProperty Name="penaltyamount" ColumnName="penaltyamount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="member_c">
+            <EntityTypeMapping TypeName="libraryModel.member_c">
+              <MappingFragment StoreEntitySet="member_c">
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="member_name" ColumnName="member_name" />
+                <ScalarProperty Name="Acc_open_date" ColumnName="Acc_open_date" />
+                <ScalarProperty Name="maxbooksallowed" ColumnName="maxbooksallowed" />
+                <ScalarProperty Name="penaltyamount" ColumnName="penaltyamount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Book101">
+            <EntityTypeMapping TypeName="libraryModel.Book101">
+              <MappingFragment StoreEntitySet="Book101">
+                <ScalarProperty Name="Book_No" ColumnName="Book_No" />
+                <ScalarProperty Name="Book_Name" ColumnName="Book_Name" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="issu01">
+            <EntityTypeMapping TypeName="libraryModel.issu01">
+              <MappingFragment StoreEntitySet="issu01">
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="member_name" ColumnName="member_name" />
+                <ScalarProperty Name="booksissued" ColumnName="booksissued" />
+                <ScalarProperty Name="maxbooksallowed" ColumnName="maxbooksallowed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="member101">
+            <EntityTypeMapping TypeName="libraryModel.member101">
+              <MappingFragment StoreEntitySet="member101">
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="member_name" ColumnName="member_name" />
+                <ScalarProperty Name="Acc_open_date" ColumnName="Acc_open_date" />
+                <ScalarProperty Name="maxbooksallowed" ColumnName="maxbooksallowed" />
+                <ScalarProperty Name="penaltyamount" ColumnName="penaltyamount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="member8">
+            <EntityTypeMapping TypeName="libraryModel.member8">
+              <MappingFragment StoreEntitySet="member8">
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="member_name" ColumnName="member_name" />
+                <ScalarProperty Name="count1" ColumnName="count1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_issue">
+            <EntityTypeMapping TypeName="libraryModel.v_issue">
+              <MappingFragment StoreEntitySet="v_issue">
+                <ScalarProperty Name="Lib_Issue_Id" ColumnName="Lib_Issue_Id" />
+                <ScalarProperty Name="Book_Name" ColumnName="Book_Name" />
+                <ScalarProperty Name="Member_Name" ColumnName="Member_Name" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Issue_date" ColumnName="Issue_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_issue01">
+            <EntityTypeMapping TypeName="libraryModel.v_issue01">
+              <MappingFragment StoreEntitySet="v_issue01">
+                <ScalarProperty Name="Book_No" ColumnName="Book_No" />
+                <ScalarProperty Name="Book_Name" ColumnName="Book_Name" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="count1" FunctionName="libraryModel.Store.count1" />
+          <FunctionImportMapping FunctionImportName="counts" FunctionName="libraryModel.Store.counts" />
+          <FunctionImportMapping FunctionImportName="sp_update" FunctionName="libraryModel.Store.sp_update" />
+          <FunctionImportMapping FunctionImportName="UpdateBooknum" FunctionName="libraryModel.Store.UpdateBooknum" />
+          <FunctionImportMapping FunctionImportName="UpdateBooksauthor" FunctionName="libraryModel.Store.UpdateBooksauthor" />
+          <FunctionImportMapping FunctionImportName="UpdateBookscategory" FunctionName="libraryModel.Store.UpdateBookscategory" />
+          <FunctionImportMapping FunctionImportName="UpdateBooksname" FunctionName="libraryModel.Store.UpdateBooksname" />
+          <FunctionImportMapping FunctionImportName="UpdateBooksprice" FunctionName="libraryModel.Store.UpdateBooksprice" />
+          <FunctionImportMapping FunctionImportName="Updatestatus" FunctionName="libraryModel.Store.Updatestatus" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
